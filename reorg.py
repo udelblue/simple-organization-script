@@ -1,0 +1,50 @@
+# test compression file
+import binascii
+import sys,getopt
+import os
+from os import listdir
+from os.path import isfile, join
+
+
+run = True
+
+alpha = 'abcdefghijklmnopqrstuvwxyz'
+
+
+def program():
+
+        p = r"C:\\cacheTest\\cachedir\\"
+        abspath =os.path.normcase(p)
+        contin = str(input( "Reorg to take place on directory " + abspath + " of Type 'y' to confirm "))
+        if contin == 'y' :
+                print('reorg started')
+                dname = os.path.dirname(abspath)
+                os.chdir(dname)
+
+
+                #create dirs a-z
+                for al in alpha:
+                        directory = al
+                        if not os.path.exists(directory):
+                                os.makedirs(directory)
+                              
+
+                #get all files
+                onlyfiles = [f for f in listdir(dname) if isfile(join(dname, f))]
+                for filename in onlyfiles:
+                        letter = str(filename).lower()
+                        letter = letter[0]
+                        if os.path.exists(letter):
+                                #move file
+                                os.rename(filename , letter + "/" + filename)     
+                print('reorg finished')
+        print('end script')   
+        
+def runstop():
+    global run
+    run = False
+    
+
+while(run):
+    program()
+    runstop()
