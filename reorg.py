@@ -1,8 +1,5 @@
 # reorg script 
-import binascii
-import sys,getopt
-import os
-import shutil
+import sys,getopt,os,shutil
 from os import listdir
 from os.path import isfile, join
 
@@ -14,6 +11,7 @@ alpha = 'abcdefghijklmnopqrstuvwxyz'
 
 def program():
 
+        #set path to dir you wish to reorg
         p = r"C:\\cacheTest\\cachedir\\"
         abspath =os.path.normcase(p)
         contin = str(input( "Reorg to take place on directory " + abspath + " of Type 'y' to confirm "))
